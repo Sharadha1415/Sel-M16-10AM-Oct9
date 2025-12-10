@@ -1,0 +1,67 @@
+To add the username         -->     git config --global user.name username
+To add the email            -->     git config --global user.email email_id
+
+To check the username and email
+    git config user.name    -->     Displays the username
+    git config user.email   -->     Displays email_id
+
+To change the directory     -->     cd <path>
+To go to previous folder    -->     cd ..
+dir                         -->     Will give the list of all the folders and files present in the path
+To create a new directory   -->     mkdir dirname
+To delete directory         -->     rmdir dirname
+
+To initialize repository    -->     git init
+To add files to staging area-->     git add filename
+                                    git add folder_name\filename
+To add all the files in project --> git add .
+To remove the files from the staging area   --> git rm --cached filename
+
+To commit                   -->     git commit -m "descriptive message"
+To get details of the commit-->     git log
+                                    The above command gives commit_id, author details, message and the timeline of the commit
+To get the short details about the commit   --> git log --oneline
+                                    The above command will give short commit_id and only the descriptive message
+
+To check the previous commits-->    git checkout <commit_id>
+
+To push the code to github
+    *   Create a repository in the github
+    *   Every repository will have a url
+    *   Copy the url
+    *   Open the command prompt
+    *   cd <project_path>
+    *   add files to staging, then commit(Only committed files can be pushed to the github)
+    *   Push the files to the github
+        git push repo_url master
+
+Whenever we make the changes in the project and we want to push the changes to the github,
+    *   add to staging area
+    *   commit
+    *   git push repo_url master
+
+
+To pull the repository from other's github
+    *   Get the repo_url
+    *   Open the command prompt
+    *   cd <project_path>
+    *   For the first time we give -->  git clone repo_url
+        The repo will be available in the project path
+    *   For the next times, to get the changes
+        cd <repo_path> -->  git pull
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

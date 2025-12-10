@@ -10,7 +10,7 @@ class Numbers:
     def prime_num(self):
         pass
 
-    
+
 num = Numbers()
 num.even_odd(100, 200)
 

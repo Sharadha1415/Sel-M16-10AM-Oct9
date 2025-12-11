@@ -12,8 +12,8 @@ css selector    :   To locate the web-elements using any attribute, we go for cs
 import time
 
 
-## Eg1
-
+# ## Eg1
+#
 # from selenium import webdriver
 #
 # opts = webdriver.ChromeOptions()

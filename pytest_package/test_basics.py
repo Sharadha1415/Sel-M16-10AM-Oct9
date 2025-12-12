@@ -49,16 +49,17 @@ Pytest  :   It is a unit testing framework
             So, we can execute the functions without calling them and we can execute the classes without creating the objects
 
 '''
+import time
 
-def test_login():
-    print("login executing")
-
-def test_logout():
-    print("logout executing")
-
-## collected 2 items
-## test_basics.py::test_login      login executing     PASSED
-## test_basics.py::test_logout     logout executing    PASSED
+# def test_login():
+#     print("login executing")
+#
+# def test_logout():
+#     print("logout executing")
+#
+# ## collected 2 items
+# ## test_basics.py::test_login      login executing     PASSED
+# ## test_basics.py::test_logout     logout executing    PASSED
 
 
 ##############################################################################################
@@ -275,22 +276,95 @@ attributes are not following the rules
 
 ##############################################################################################
 
-class TestSample:
+# class TestSample:
+#
+#     def __init__(self):
+#         pass
+#
+#     def test_login(self):
+#         print("login executing")
+#
+#     def test_signup(self):
+#         print("signup executing")
+#
+#     def test_logout(self):
+#         print("logout executing")
+#
+# ## collected 0 items
+# ## PytestCollectionWarning: cannot collect test class 'TestSample' because it has a __init__ constructor (from: test_basics.py)
 
-    def __init__(self):
-        pass
+##############################################################################################
 
-    def test_login(self):
-        print("login executing")
+from selenium import webdriver
 
-    def test_signup(self):
-        print("signup executing")
+opts = webdriver.ChromeOptions()
+opts.add_experimental_option("detach", True)
 
-    def test_logout(self):
-        print("logout executing")
+driver = webdriver.Chrome(opts)
 
-## collected 0 items
-## PytestCollectionWarning: cannot collect test class 'TestSample' because it has a __init__ constructor (from: test_basics.py)
+driver.get('https://demowebshop.tricentis.com/')
+time.sleep(2)
+
+class TestRegister:
+
+    def test_reg_link(self):
+        driver.find_element('xpath', '//a[text()="Register"]').click()
+
+    def test_gender_btn(self):
+        driver.find_element('id', 'gender-male').click()
+
+    def test_fname(self):
+        driver.find_element('id', 'FirstName').send_keys('Abhishek')
+
+    def test_lname(self):
+        driver.find_element('id', 'LastName').send_keys('U')
+
+    def test_reg_email(self):
+        driver.find_element('id', 'Email').send_keys('abhi@gmail.com')
+
+    def test_reg_pwd(self):
+        driver.find_element('id', 'Password').send_keys('abhi@12345')
+
+    def test_confirm_pwd(self):
+        driver.find_element('id', 'ConfirmPassword').send_keys('abhi@12345')
+        time.sleep(1)
+
+class TestLogin:
+
+    def test_login_link(self):
+        driver.find_element('xpath', '//a[text()="Log in"]').click()
+
+    def test_login_email(self):
+        driver.find_element('id', 'Email').send_keys('abhi@gmail.com')
+
+    def test_login_pwd(self):
+        driver.find_element('id', 'Password').send_keys('abhi@12345')
+
+
+
+
+'''
+fixtures, cbt, conftest, generate reports = 3
+markers = 2
+parallel execution/dep = 1
+
+POM = 5
+'''
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

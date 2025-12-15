@@ -343,14 +343,6 @@ class TestLogin:
 
 
 
-'''
-fixtures, cbt, conftest, generate reports = 3
-markers = 2
-parallel execution/dep = 1
-
-POM = 5
-'''
-
 
 
 

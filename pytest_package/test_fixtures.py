@@ -332,6 +332,7 @@ opts.add_experimental_option("detach", True)
 @pytest.fixture(scope='class')
 def setup():
     driver = webdriver.Chrome(opts)
+    driver.implicitly_wait(10)
     driver.get('https://demowebshop.tricentis.com/')
     time.sleep(2)
     yield driver
@@ -373,9 +374,6 @@ class TestLogin:
 
     def test_login_pwd(self, setup):
         setup.find_element('id', 'Password').send_keys('abhi@12345')
-
-
-
 
 
 

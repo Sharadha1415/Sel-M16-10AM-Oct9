@@ -83,13 +83,26 @@
 
 
 
+import time
+from selenium import webdriver
+from selenium.webdriver.common.by import By
 
+opts = webdriver.ChromeOptions()
+opts.add_experimental_option("detach", True)
 
+driver = webdriver.Chrome(opts)
 
+driver.get('https://www.flipkart.com/')
+time.sleep(2)
 
+driver.find_element('id', '')
+driver.find_element(By.ID, '')
 
+driver.find_element('name', 'name')
+driver.find_element(By.NAME, 'name')
 
-
+driver.find_element('class name', '')
+driver.find_element(By.CLASS_NAME, '')
 
 
 

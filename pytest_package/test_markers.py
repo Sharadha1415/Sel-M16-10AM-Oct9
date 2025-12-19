@@ -230,26 +230,133 @@ skip    :   To skip the execution of the testcases, we use skip marker
 
 ###############################################################################################
 
-@pytest.mark.skip
-class TestSample:
+# @pytest.mark.skip
+# class TestSample:
+#
+#     def test_login(self):
+#         print("login executing")
+#
+#     def test_reg(self):
+#         print("reg executing")
+#
+#     def test_signup(self):
+#         print("signup executing")
+#
+#     def test_logout(self):
+#         print("logout executing")
+#
+# ## collected 4 items
+# ## test_markers.py::TestSample::test_login     SKIPPED (unconditional skip)
+# ## test_markers.py::TestSample::test_reg       SKIPPED (unconditional skip)
+# ## test_markers.py::TestSample::test_signup    SKIPPED (unconditional skip)
+# ## test_markers.py::TestSample::test_logout    SKIPPED (unconditional skip)
 
-    def test_login(self):
-        print("login executing")
+###############################################################################################
+'''
+skipif  :   skipif is also used to skip the execution of the testcases, but the skip is based on a condition.
+            It takes two parameters, condition and reason.
+            condition is the first parameter, reason is the second parameter.
+            Both are mandatory parameters
+            
+            SYNTAX  :   @pytest.mark.skipif(condition, reason)
+                        def test_case():
+                            pass
+                        
+                        If the condition is True, it will skip the execution of the testcase
+                        If the condition is False, it will execute the testcase 
+            
+'''
 
-    def test_reg(self):
-        print("reg executing")
 
-    def test_signup(self):
-        print("signup executing")
+# @pytest.mark.skipif(True, reason='login already done')
+# def test_login():
+#     print("login executing")
+#
+# ## collected 1 item
+# ## test_markers.py::test_login         SKIPPED (login already done)
 
-    def test_logout(self):
-        print("logout executing")
+# ##---------------------------------------------------------------------------------------------
+#
+# @pytest.mark.skipif(False, reason='login already done')
+# def test_login():
+#     print("login executing")
+#
+# ## collected 1 item
+# ## test_markers.py::test_login     login executing         PASSED
 
-## collected 4 items
-## test_markers.py::TestSample::test_login     SKIPPED (unconditional skip)
-## test_markers.py::TestSample::test_reg       SKIPPED (unconditional skip)
-## test_markers.py::TestSample::test_signup    SKIPPED (unconditional skip)
-## test_markers.py::TestSample::test_logout    SKIPPED (unconditional skip)
+##---------------------------------------------------------------------------------------------
+
+# @pytest.mark.skipif(False)
+# def test_login():
+#     print("login executing")
+#
+# ## collected 1 item
+# ## test_markers.py::test_login         ERROR
+#
+# ## In the above testcase, reason is not specified, thats why its giving error.
+# ## reason is the mandatory parameter
+
+##---------------------------------------------------------------------------------------------
+
+# @pytest.mark.skipif(reason="login already completed")
+# def test_login():
+#     print("login executing")
+#
+# ## collected 1 item
+# ## test_markers.py::test_login     SKIPPED (login already completed)
+#
+# ## When the condition is not gives, by default it will be considered as True.
+# ## That's why the testcase is skipped when no conditions are given
+
+# ##---------------------------------------------------------------------------------------------
+'''
+skip    :
+'''
+# import time
+# from selenium import webdriver
+#
+# opts = webdriver.ChromeOptions()
+# opts.add_experimental_option("detach", True)
+#
+# driver = webdriver.Chrome(opts)
+#
+# driver.get('https://www.saucedemo.com/')
+# time.sleep(2)
+#
+# def test_login():
+#     driver.find_element("id", "user-name").send_keys('standard_user')
+#     time.sleep(1)
+#     driver.find_element('id', 'password').send_keys('secret_sauce')
+#     time.sleep(1)
+#     driver.find_element('id', 'login-button').click()
+#     time.sleep(3)
+#
+# def test_logout():
+#     if 'inventory' not in driver.current_url:
+#         pytest.skip("login is unsuccessfull")
+#
+#     driver.find_element('id', 'react-burger-menu-btn').click()
+#     time.sleep(2)
+#     driver.find_element('id', 'logout_sidebar_link').click()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

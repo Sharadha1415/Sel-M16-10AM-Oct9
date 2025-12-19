@@ -83,26 +83,93 @@
 
 
 
+# import time
+# from selenium import webdriver
+# from selenium.webdriver.common.by import By
+#
+# opts = webdriver.ChromeOptions()
+# opts.add_experimental_option("detach", True)
+#
+# driver = webdriver.Chrome(opts)
+
+# driver.get('https://www.flipkart.com/')
+# time.sleep(2)
+#
+# driver.find_element('id', '')
+# driver.find_element(By.ID, '')
+#
+# driver.find_element('name', 'name')
+# driver.find_element(By.NAME, 'name')
+#
+# driver.find_element('class name', '')
+# driver.find_element(By.CLASS_NAME, '')
+
+
+######################################################################################
+
+# ## Solution1
+# import time
+# from selenium import webdriver
+#
+# opts = webdriver.ChromeOptions()
+# opts.add_experimental_option("detach", True)
+#
+# driver = webdriver.Chrome(opts)
+#
+# driver.get('https://www.myntra.com/')
+# time.sleep(2)
+#
+# logo = driver.find_element('xpath', '//a[@class="myntraweb-sprite desktop-logo sprites-headerLogo "]')
+# try:
+#     assert logo.is_displayed()
+#     print("Logo is displayed")
+# except AssertionError:
+#     print("logo is not displayed")
+
+
+######################################################################################
+
+# ## Solution2
+# import time
+# from selenium import webdriver
+#
+# opts = webdriver.ChromeOptions()
+# opts.add_experimental_option("detach", True)
+#
+# driver = webdriver.Chrome(opts)
+#
+# driver.get('https://www.myntra.com/')
+# time.sleep(2)
+#
+# logo = driver.find_elements('xpath', '//a[@class="myntraweb-sprite desktop-logo sprites-headerLogo "]')
+# ## [wb1, wb2,..]
+#
+# assert logo[0].is_displayed()
+
+
+######################################################################################
+
+## Solution3
 import time
 from selenium import webdriver
-from selenium.webdriver.common.by import By
 
 opts = webdriver.ChromeOptions()
 opts.add_experimental_option("detach", True)
 
 driver = webdriver.Chrome(opts)
 
-driver.get('https://www.flipkart.com/')
+driver.get('https://www.myntra.com/')
 time.sleep(2)
 
-driver.find_element('id', '')
-driver.find_element(By.ID, '')
+# ads = driver.find_elements('xpath', '//div[@class="container-container container-aspectContainer"]')
+# print(len(ads))
 
-driver.find_element('name', 'name')
-driver.find_element(By.NAME, 'name')
+ele = driver.find_element('xpath', '//img[@src="https://assets.myntassets.com/w_326,c_limit,fl_progressive,dpr_2.0/assets/images/2025/DECEMBER/3/z7vh17xm_8c37888fd08042818a17605f6b1534f2.jpg"]')
+assert ele.is_displayed()
 
-driver.find_element('class name', '')
-driver.find_element(By.CLASS_NAME, '')
+
+
+
 
 
 

@@ -48,6 +48,11 @@ Pytest  :   It is a unit testing framework
             When we follow the rules, pytest will automatically recognize the files, functions and classes which are following the rules
             So, we can execute the functions without calling them and we can execute the classes without creating the objects
 
+            To execute the test file
+            Right click anywhere on the test_file --> open in --> terminal --> pytest test_filename.py -vs
+                -v  --> Verbosity.  This gives the detailed explanation of the code
+                -s  --> Scripting.  This will print all the print statements
+
 '''
 import time
 

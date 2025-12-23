@@ -19,6 +19,22 @@
 
 ###########################################################################
 
+'''
+
+pytest_addoption() is used to add custom command-line arguments to pytest.
+That means:
+    We can define our own options
+    User can pass values from terminal
+    Pytest makes those values available inside tests and fixtures
+
+Flow:
+    User passes value from terminal
+    pytest_addoption registers the option
+    Pytest stores the value
+    request.config.getoption() retrieves it
+
+'''
+
 import time
 import pytest
 

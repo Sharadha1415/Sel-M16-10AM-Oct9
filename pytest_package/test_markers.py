@@ -11,6 +11,7 @@ There are 2 types of markers
 
 '''
 
+import time
 import pytest
 
 
@@ -338,6 +339,204 @@ skip    :
 #     driver.find_element('id', 'react-burger-menu-btn').click()
 #     time.sleep(2)
 #     driver.find_element('id', 'logout_sidebar_link').click()
+
+###################################################################################################
+
+'''
+xfail   :   This is an expected failure
+
+            SYNTAX  :   @pytest.mark.xfail
+                        def test_func():
+                            pass  
+                        
+                        We are expecting the test_func to fail.
+                        If the testcase is failed, then the output will be XFAIL
+                        If the testcase is passed, then the output will be XPASS
+'''
+
+
+# @pytest.mark.xfail
+# def test_login():               ## expected failure
+#     raise Exception
+#
+# def test_signup():
+#     print("signup executing")
+#
+# def test_reg():
+#     prt("reg executing")
+#
+# ## collected 3 items
+# ## test_markers.py::test_login                             XFAIL
+# ## test_markers.py::test_signup        signup executing    PASSED
+# ## test_markers.py::test_reg                               FAILED
+#
+############################################################################################
+
+# @pytest.mark.xfail
+# def test_login():               ## expected failure
+#     print("login executing")
+#
+# def test_signup():
+#     print("signup executing")
+#
+# def test_reg():
+#     prt("reg executing")
+#
+# ## collected 3 items
+# ## test_markers.py::test_login     login executing     XPASS
+# ## test_markers.py::test_signup    signup executing    PASSED
+# ## test_markers.py::test_reg                           FAILED
+
+############################################################################################
+
+# from selenium import webdriver
+#
+# opts = webdriver.ChromeOptions()
+# opts.add_experimental_option("detach", True)
+#
+# driver = webdriver.Chrome(opts)
+#
+# driver.get('https://www.saucedemo.com/')
+# time.sleep(2)
+#
+#
+# @pytest.mark.xfail
+# def test_login():
+#     driver.find_element("id", "user-name").send_keys('standard_user')
+#     time.sleep(1)
+#     driver.find_element('id', 'password').send_keys('secret_sauceee')
+#     time.sleep(1)
+#     driver.find_element('id', 'login-button').click()
+#     time.sleep(3)
+#
+#     assert 'inventory' in driver.current_url
+
+############################################################################################
+
+'''
+parametrize     :   
+'''
+
+
+# @pytest.mark.parametrize("a, b", [(10, 20)])
+# def test_add(a, b):
+#     print(a + b)
+#
+# ## a, b --> (10,20)
+# ## a-->10,  b-->20
+#
+# ## collected 1 item
+# ## test_markers.py::test_add[10-20]    30      PASSED
+
+
+###########################################################################################
+
+# @pytest.mark.parametrize("a, b", [(10, 20), 30])
+# def test_add(a, b):
+#     print(a + b)
+#
+# ## a,b --> (10, 20)
+# ## a,b --> 30
+#
+# ## collected 0 items / 1 error
+
+
+###########################################################################################
+
+# @pytest.mark.parametrize("a, b", [(10, 20), (30, 40), (-10, 10), (1, 1), (10, -10)])
+# def test_add(a, b):
+#     print(a + b)
+#
+# ## collected 5 items
+# ## test_markers.py::test_add[10-20]    30      PASSED
+# ## test_markers.py::test_add[30-40]    70      PASSED
+# ## test_markers.py::test_add[-10-10]   0       PASSED
+# ## test_markers.py::test_add[1-1]      2       PASSED
+# ## test_markers.py::test_add[10--10]   0       PASSED
+
+###########################################################################################
+
+# @pytest.mark.parametrize("a, b", [(10, 20)])
+# def test_add(a, b, c):
+#     print(a + b + c)
+#
+# ## ERROR
+# ## Formal and actual arguments are not matching
+
+# #################################################################################
+#
+# from selenium import webdriver
+#
+# opts = webdriver.ChromeOptions()
+# opts.add_experimental_option("detach", True)
+#
+# @pytest.fixture()
+# def setup():
+#     driver = webdriver.Chrome(opts)
+#     driver.get('https://www.saucedemo.com/')
+#     time.sleep(2)
+#     yield driver
+#     driver.close()
+#
+#
+# @pytest.mark.parametrize("username, pwd", [("standard_user", "secret_sauce"),
+#                                            ("standard_user", "invalid"),
+#                                            ("abcdefgh", "standard_user"),
+#                                            ("standard_user", "secret_sauce")])
+# def test_login(username, pwd, setup):
+#     setup.find_element("id", "user-name").send_keys(username)
+#     time.sleep(1)
+#     setup.find_element('id', 'password').send_keys(pwd)
+#     time.sleep(1)
+#     setup.find_element('id', 'login-button').click()
+#     time.sleep(3)
+#
+#     try:
+#         assert 'inventory' in setup.current_url
+#         print("successfull login")
+#     except:
+#         print("unsuccessfull login")
+
+#################################################################################
+
+
+## Stored the login credentials in an excel file(ddt\login_credentials.xlsx)
+## reading the login credentials(ddt\read_login_data.py)
+
+from selenium import webdriver
+from ddt.read_login_data import read_login_credentials
+
+opts = webdriver.ChromeOptions()
+opts.add_experimental_option("detach", True)
+
+login_data = read_login_credentials()
+
+@pytest.fixture()
+def setup():
+    driver = webdriver.Chrome(opts)
+    driver.get('https://www.saucedemo.com/')
+    time.sleep(2)
+    yield driver
+    driver.close()
+
+
+@pytest.mark.parametrize("username, pwd", login_data)
+def test_login(username, pwd, setup):
+    setup.find_element("id", "user-name").send_keys(username)
+    time.sleep(1)
+    setup.find_element('id', 'password').send_keys(pwd)
+    time.sleep(1)
+    setup.find_element('id', 'login-button').click()
+    time.sleep(3)
+
+    try:
+        assert 'inventory' in setup.current_url
+        print("successfull login")
+    except:
+        print("unsuccessfull login")
+
+
+
 
 
 

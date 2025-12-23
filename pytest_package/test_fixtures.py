@@ -34,19 +34,37 @@
 
 ##############################################################################
 '''
-Fixtures    :   They are the functions which are used to perform setup and teardown operations
-                setup       :   The set of operations which executes before the execution of the test_function
-                teardown    :   The set of operations which executes afetr the execution of the test_function
-                
-                SYNTAX  :       @pytest.fixture()
-                                def func():
-                                    pass        ## setup
-                                    yield
-                                    pass        ## teardown
-                                
-                                def test_func(func):    
-                                    pass
+Fixture :   @pytest.fixture()  is a inbuilt decorator
+            It is a function which is used to perform setup and teardown operations
+            setup       :   The set of operations which executes before the execution of the test_function
+            teardown    :   The set of operations which executes after the execution of the test_function
 
+            SYNTAX      :   @pytest.fixture()
+                            def func():
+                                pass            ## setup
+                                yield
+                                pass            ## teardown
+
+                            def test_func(func):
+                                pass
+
+                            We should pass the name of the fixture as a parameter for the test_functions. Pytest willl automatically execute it.
+
+                            *   autouse :   autouse is a argument of fixture. It is an optional argument.
+                                            When we give autouse=True, by default the fixture will be applied for all the test_functions/test_methods present in that module
+
+                            *   scope   :   It is an argument of a fixture. It is also an optional parameter.
+                                            scope defines the scope of a fixture.
+
+                                            When we give scope="class", the fixture will be applied on a class level.
+                                            Before the execution of the entire class, setup operation will be performed
+                                            After the execution of the entire class, teardown operation will be performed
+
+                                            When we give scope="module", the fixture will be applied on a module(file) level.
+                                            Before the execution of the entire module, setup operation will be performed
+                                            After the execution of the entire module, teardown operation will be performed
+
+                                            Be default, scope="function"
 
 '''
 import pytest

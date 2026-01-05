@@ -76,11 +76,41 @@ import time
 # time.sleep(1)
 # driver.find_element('css selector', 'input[name="reg_passwd__"]').send_keys('harry@12345')
 
+###################################################################################################
 
+# from selenium import webdriver
+#
+# opts = webdriver.ChromeOptions()
+# opts.add_experimental_option("detach", True)
+#
+# driver = webdriver.Chrome(opts)
+#
+# driver.get('https://www.instagram.com/accounts/emailsignup/')
+# time.sleep(2)
+#
+# driver.find_element('css selector', 'input[aria-label="Mobile Number or Email"]').send_keys('arunKumar@gmail.com')
+# time.sleep(1)
+# driver.find_element('css selector', 'input[aria-label="Password"]').send_keys('arun@12345')
+# time.sleep(1)
+# driver.find_element('css selector', 'input[aria-label="Full Name"]').send_keys('Arunkumar')
+# time.sleep(1)
+# driver.find_element('css selector', 'input[aria-label="Username"]').send_keys('Arun_kumar')
 
+###################################################################################################
 
+from selenium import webdriver
 
+opts = webdriver.ChromeOptions()
+opts.add_experimental_option("detach", True)
 
+driver = webdriver.Chrome(opts)
+
+driver.get('https://www.instagram.com/accounts/emailsignup/')
+time.sleep(2)
+
+driver.find_element('css selector', 'input[type="text"]').send_keys('Arun')
+time.sleep(1)
+driver.find_element('css selector', 'input[type="text"]').send_keys('Kumar')
 
 
 

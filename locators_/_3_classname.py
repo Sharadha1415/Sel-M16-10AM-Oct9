@@ -33,22 +33,22 @@ import time
 
 #######################################################################################
 
-## Eg2
-
-from selenium import webdriver
-
-opts = webdriver.ChromeOptions()
-opts.add_experimental_option("detach", True)
-
-driver = webdriver.Chrome(opts)
-
-driver.get('https://www.facebook.com/r.php?entry_point=login')
-time.sleep(2)
-
-driver.find_element('class name', 'inputtext _58mg _5dba _2ph-').send_keys('Harry')
-
-## NoSuchElementException
-## class name locator cannot identify the spaces
+# ## Eg2
+#
+# from selenium import webdriver
+#
+# opts = webdriver.ChromeOptions()
+# opts.add_experimental_option("detach", True)
+#
+# driver = webdriver.Chrome(opts)
+#
+# driver.get('https://www.facebook.com/r.php?entry_point=login')
+# time.sleep(2)
+#
+# driver.find_element('class name', 'inputtext _58mg _5dba _2ph-').send_keys('Harry')
+#
+# ## NoSuchElementException
+# ## class name locator cannot identify the spaces
 
 ##-----------------------------------------------------------------------------------
 
@@ -88,7 +88,27 @@ driver.find_element('class name', 'inputtext _58mg _5dba _2ph-').send_keys('Harr
 
 #######################################################################################
 
-## Eg4
+# ## Eg4
+#
+# from selenium import webdriver
+#
+# opts = webdriver.ChromeOptions()
+# opts.add_experimental_option("detach", True)
+#
+# driver = webdriver.Chrome(opts)
+#
+# driver.get(r'C:\Users\Ramya\PycharmProjects\sel-capg-oct16\files_\css_selector.html')
+# time.sleep(2)
+#
+# driver.find_element('class name', 'first_row').send_keys('python')
+# time.sleep(1)
+# driver.find_element('class name', 'first_row').send_keys('selenium')
+#
+# ## both the values will be filled in the first textbox only
+
+
+#######################################################################################
+
 
 from selenium import webdriver
 
@@ -97,17 +117,9 @@ opts.add_experimental_option("detach", True)
 
 driver = webdriver.Chrome(opts)
 
-driver.get(r'C:\Users\Ramya\PycharmProjects\sel-capg-oct16\files_\css_selector.html')
+driver.get('https://www.instagram.com/accounts/emailsignup/')
 time.sleep(2)
-
-driver.find_element('class name', 'first_row').send_keys('python')
-time.sleep(1)
-driver.find_element('class name', 'first_row').send_keys('selenium')
-
-## both the values will be filled in the first textbox only
-
-
-
+driver.find_element('class name', '_aa4b._add6._ac4d._ap35').send_keys('Arunkumar')
 
 
 

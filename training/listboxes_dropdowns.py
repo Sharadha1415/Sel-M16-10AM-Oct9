@@ -231,21 +231,21 @@ options     :   options is a property of Selenium’s Select class.
 ##################################################################################################
 '''         To select all the elements from the dropdown            '''
 
-from selenium import webdriver
-from selenium.webdriver.support.select import Select
-
-opts = webdriver.ChromeOptions()
-opts.add_experimental_option("detach", True)
-
-driver = webdriver.Chrome(opts)
-
-driver.get(r'C:\Users\Ramya\PycharmProjects\Sel-Oct9-M16-10AM\files_\demo.html')
-time.sleep(2)
-
-cars = driver.find_element('xpath', '//select[@id="standard_cars"]')
-select_obj = Select(cars)
-
-all_elements = select_obj.options               ## [wb1, wb2, wb3, wb4, wb5,...]
+# from selenium import webdriver
+# from selenium.webdriver.support.select import Select
+#
+# opts = webdriver.ChromeOptions()
+# opts.add_experimental_option("detach", True)
+#
+# driver = webdriver.Chrome(opts)
+#
+# driver.get(r'C:\Users\Ramya\PycharmProjects\Sel-Oct9-M16-10AM\files_\demo.html')
+# time.sleep(2)
+#
+# cars = driver.find_element('xpath', '//select[@id="standard_cars"]')
+# select_obj = Select(cars)
+#
+# all_elements = select_obj.options               ## [wb1, wb2, wb3, wb4, wb5,...]
 
 # ## select_by_index
 # for i in range(0, len(all_elements)):
@@ -265,6 +265,36 @@ all_elements = select_obj.options               ## [wb1, wb2, wb3, wb4, wb5,...]
 #     text = ele.text
 #     select_obj.select_by_visible_text(text)
 #     time.sleep(1)
+
+
+##################################################################################
+'''
+Normal listbox  :   We should locate the web-element and click on it 
+'''
+
+# from selenium import webdriver
+#
+# opts = webdriver.ChromeOptions()
+# opts.add_experimental_option("detach", True)
+#
+# driver = webdriver.Chrome(opts)
+#
+# driver.get("https://www.irctc.co.in/nget/train-search")
+# time.sleep(2)
+#
+# driver.find_element('xpath', '(//div[@role="button"])[1]').click()
+# time.sleep(2)
+# driver.find_element('xpath', '//span[text()="AC Chair car (CC)"]').click()
+# time.sleep(2)
+# driver.find_element('xpath', '(//div[@role="button"])[2]').click()
+# time.sleep(2)
+# driver.find_element('xpath', '//span[text()="PREMIUM TATKAL"]').click()
+
+
+
+
+
+
 
 
 

@@ -114,43 +114,43 @@ assert  :   It is a keyword.
             If the condition is False, then it will always give AssertionError
 '''
 
-assert 10%2==0
-print("Hello world")
-
-assert 11%2==0
+# assert 10%2==0
+# print("Hello world")
+#
+# assert 11%2==0
 
 #------------------------------------------------------------------------------------------------
-from selenium import webdriver
-
-opts = webdriver.ChromeOptions()
-opts.add_experimental_option("detach", True)
-
-driver = webdriver.Chrome(opts)
-
-driver.get('https://www.instagram.com/accounts/emailsignup/')
-time.sleep(2)
-
-ele2 = driver.find_element('xpath', '//button[text()="Log in with Facebook"]')      ## True
-assert ele2.is_enabled()
-print("Login with facebook is enabled")
-
-ele = driver.find_element('xpath', '//button[text()="Sign up"]')                    ## False
-assert ele.is_enabled()             ## AssertionError
-
-##------------------------------------------------------------------------------------------------
-
-from selenium import webdriver
-
-opts = webdriver.ChromeOptions()
-opts.add_experimental_option("detach", True)
-
-driver = webdriver.Chrome(opts)
-
-driver.get('https://www.myntra.com/')
-time.sleep(2)
-
-women = driver.find_element('xpath', '(//a[text()="Women"])[1]')
-assert women.get_attribute('href') == 'Nandini', "The attribute value is not Nandini"
+# from selenium import webdriver
+#
+# opts = webdriver.ChromeOptions()
+# opts.add_experimental_option("detach", True)
+#
+# driver = webdriver.Chrome(opts)
+#
+# driver.get('https://www.instagram.com/accounts/emailsignup/')
+# time.sleep(2)
+#
+# ele2 = driver.find_element('xpath', '//button[text()="Log in with Facebook"]')      ## True
+# assert ele2.is_enabled()
+# print("Login with facebook is enabled")
+#
+# ele = driver.find_element('xpath', '//button[text()="Sign up"]')                    ## False
+# assert ele.is_enabled()             ## AssertionError
+#
+# ##------------------------------------------------------------------------------------------------
+#
+# from selenium import webdriver
+#
+# opts = webdriver.ChromeOptions()
+# opts.add_experimental_option("detach", True)
+#
+# driver = webdriver.Chrome(opts)
+#
+# driver.get('https://www.myntra.com/')
+# time.sleep(2)
+#
+# women = driver.find_element('xpath', '(//a[text()="Women"])[1]')
+# assert women.get_attribute('href') == 'Nandini', "The attribute value is not Nandini"
 
 ##############################################################################################
 
@@ -186,6 +186,7 @@ aria-role   :   It is a property.
 # # print(search_bar.aria_role)     ## textbox
 
 ##------------------------------------------------------------------------
+
 '''
 To Take the screenshot of a web-element, we have screenshot() attribute
     SYNTAX  :   web_element.screenshot("ss_name.png")
@@ -193,28 +194,38 @@ To Take the screenshot of a web-element, we have screenshot() attribute
 
 To store the screenshot in different location
     SYNTAX  :   web_element.screenshot("location\ss_name.png")
-
 '''
 
 # women.screenshot(r'C:\Users\Ramya\PycharmProjects\Sel-Oct9-M16-10AM\screenshots_\women.png')
 # ele.screenshot(r'C:\Users\Ramya\PycharmProjects\Sel-Oct9-M16-10AM\screenshots_\heading.png')
 # search_bar.screenshot(r'C:\Users\Ramya\PycharmProjects\Sel-Oct9-M16-10AM\screenshots_\searchbar.png')
 
+##############################################################################################
 
+'''
+is_displayed    :   It is an attribute which will check whether the element is displayed on the page or not
+                    
+                    Returns True if the web-element is displayed
+                    Returns False if the web-element is not displayed
+                    
+                    SYNTAX  :   web_element.is_displayed() 
+'''
 
+from selenium import webdriver
 
+opts = webdriver.ChromeOptions()
+opts.add_experimental_option("detach", True)
 
+driver = webdriver.Chrome(opts)
 
+driver.get("https://demowebshop.tricentis.com/")
+time.sleep(2)
 
+ele1 = driver.find_element('xpath', '(//a[contains(text(),"Books")])[1]')
+print(ele1.is_displayed())
 
-
-
-
-
-
-
-
-
+ele2 = driver.find_element('xpath', '(//a[contains(text(),"Books")])[2]')
+print(ele2.is_displayed())
 
 
 

@@ -186,15 +186,15 @@ aria-role   :   It is a property.
 # # print(search_bar.aria_role)     ## textbox
 
 ##------------------------------------------------------------------------
-
-'''
-To Take the screenshot of a web-element, we have screenshot() attribute
-    SYNTAX  :   web_element.screenshot("ss_name.png")
-                By default the screenshot will be saved in the same location as our python file
-
-To store the screenshot in different location
-    SYNTAX  :   web_element.screenshot("location\ss_name.png")
-'''
+#
+# '''
+# To Take the screenshot of a web-element, we have screenshot() attribute
+#     SYNTAX  :   web_element.screenshot("ss_name.png")
+#                 By default the screenshot will be saved in the same location as our python file
+#
+# To store the screenshot in different location
+#     SYNTAX  :   web_element.screenshot("location\ss_name.png")
+# '''
 
 # women.screenshot(r'C:\Users\Ramya\PycharmProjects\Sel-Oct9-M16-10AM\screenshots_\women.png')
 # ele.screenshot(r'C:\Users\Ramya\PycharmProjects\Sel-Oct9-M16-10AM\screenshots_\heading.png')
@@ -211,6 +211,29 @@ is_displayed    :   It is an attribute which will check whether the element is d
                     SYNTAX  :   web_element.is_displayed() 
 '''
 
+# from selenium import webdriver
+#
+# opts = webdriver.ChromeOptions()
+# opts.add_experimental_option("detach", True)
+#
+# driver = webdriver.Chrome(opts)
+#
+# driver.get("https://demowebshop.tricentis.com/")
+# time.sleep(2)
+#
+# ele1 = driver.find_element('xpath', '(//a[contains(text(),"Books")])[1]')
+# print(ele1.is_displayed())
+#
+# ele2 = driver.find_element('xpath', '(//a[contains(text(),"Books")])[2]')
+# print(ele2.is_displayed())
+
+##############################################################################################
+
+'''
+clear   :   To clear the contents of the textbox, we use clear()
+            SYNTAX  :   web_element.clear()
+'''
+
 from selenium import webdriver
 
 opts = webdriver.ChromeOptions()
@@ -218,23 +241,12 @@ opts.add_experimental_option("detach", True)
 
 driver = webdriver.Chrome(opts)
 
-driver.get("https://demowebshop.tricentis.com/")
+driver.get("https://testautomationpractice.blogspot.com/")
 time.sleep(2)
 
-ele1 = driver.find_element('xpath', '(//a[contains(text(),"Books")])[1]')
-print(ele1.is_displayed())
-
-ele2 = driver.find_element('xpath', '(//a[contains(text(),"Books")])[2]')
-print(ele2.is_displayed())
-
-
-
-
-
-
-
-
-
+driver.find_element("id", "name").send_keys("Shantheri")
+time.sleep(2)
+driver.find_element("id", "name").clear()
 
 
 

@@ -149,7 +149,25 @@
 
 ######################################################################################
 
-## Solution3
+# ## Solution3
+# import time
+# from selenium import webdriver
+#
+# opts = webdriver.ChromeOptions()
+# opts.add_experimental_option("detach", True)
+#
+# driver = webdriver.Chrome(opts)
+#
+# driver.get('https://www.myntra.com/')
+# time.sleep(2)
+
+# ads = driver.find_elements('xpath', '//div[@class="container-container container-aspectContainer"]')
+# print(len(ads))
+
+# ele = driver.find_element('xpath', '//img[@src="https://assets.myntassets.com/w_326,c_limit,fl_progressive,dpr_2.0/assets/images/2025/DECEMBER/3/z7vh17xm_8c37888fd08042818a17605f6b1534f2.jpg"]')
+# assert ele.is_displayed()
+
+####################################################################################################
 import time
 from selenium import webdriver
 
@@ -161,25 +179,7 @@ driver = webdriver.Chrome(opts)
 driver.get('https://www.myntra.com/')
 time.sleep(2)
 
-# ads = driver.find_elements('xpath', '//div[@class="container-container container-aspectContainer"]')
-# print(len(ads))
-
-ele = driver.find_element('xpath', '//img[@src="https://assets.myntassets.com/w_326,c_limit,fl_progressive,dpr_2.0/assets/images/2025/DECEMBER/3/z7vh17xm_8c37888fd08042818a17605f6b1534f2.jpg"]')
-assert ele.is_displayed()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+driver.switch_to.frame("id1")
 
 
 

@@ -45,6 +45,8 @@ There are 2 types
 
 import time
 
+from selenium.common import NoSuchElementException
+
 '''         using time.sleep()          '''
 # from selenium import webdriver
 #
@@ -244,6 +246,52 @@ import time
 # end = time.time()
 #
 # print(end-start)
+
+#######################################################################################
+
+'''
+fluent_wait :   
+'''
+
+from selenium import webdriver
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+opts = webdriver.ChromeOptions()
+opts.add_experimental_option("detach", True)
+
+driver = webdriver.Chrome(opts)
+wait_ = WebDriverWait(driver, 10, poll_frequency=3, ignored_exceptions=[NoSuchElementException])
+
+driver.get('https://the-internet.herokuapp.com/dynamic_loading/1')
+time.sleep(2)
+
+wait_.until(EC.element_to_be_clickable(('xpath', '//button[text()="Start"]'))).click()
+
+start = time.time()
+wait_.until(EC.invisibility_of_element(('xpath', '//div[text()="Loading... "]')))
+end = time.time()
+
+print(end-start)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

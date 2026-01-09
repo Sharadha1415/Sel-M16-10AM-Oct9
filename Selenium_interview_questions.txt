@@ -274,6 +274,7 @@ Selenium:
         ac_obj.drag_and_drop(draggable_ele, droppable_ele).perform()
 
 ##############################################################################################
+
 31. How to send ENTER/TAB keys in WebDriver?
         from selenium import webdriver
         from selenium.webdriver.common.action_chains import ActionChains
@@ -314,6 +315,7 @@ Selenium:
         To simulate forward :   driver.forward()
 
 ##############################################################################################
+
 34. How to check if an element is visible on the web page?
         Solution1
         from selenium import webdriver
@@ -330,28 +332,300 @@ Selenium:
         element.is_displayed()
 
 ##############################################################################################
-35. How to check if a button is enabled on the page? --> is_enabled()
+35. How to check if a button is enabled on the page?
+        is_enabled()
+        SYNTAX  :   web_element.is_enabled()
+
+##############################################################################################
+
 36. How do you get the current page URL?
+        driver.current_url
+
+##############################################################################################
+
 37. What is the difference between find_element and find_elements?
+        find_element    :   Locates only one web-element
+                            Return type is a web-element
+                            Locates only first occurance
+                            If the locator value is wrong(if the element is not available), then find_element will give NoSuchElementException
+
+        find_elements   :   Locates multiple web-elements
+                            Return type is a list of web-elements
+                            Locates all the occurances
+                            If the locator value is wrong(if the element is not available), then find_elements will give empty list
+
+##############################################################################################
+
 38. How do you achieve synchronization in WebDriver?
 39. Explain implicit and explicit wait
+
+        Synchronization :   Matching the speed of the webdriver to the speed of the web-application.
+        *   The automation script will execute very fast, but the application might be little slow
+        *   The web-elements might take little extra time to get loaded, so when the element is not loaded, we get error.
+
+        To avoid such errors, we will make the automation script(driver) wait until the element is available
+        Suppose we don't handle such issues, we might get
+            *   NoSuchElementException
+            *   ElementNotInteractableException
+            *   StaleElementReferenceException
+
+        To handle the automation process smoothly, we will make use of synchronization
+
+        There are 2 types of synchronization
+        *   unconditional synchronization   :   No conditions are passed
+                We will make the script wait by passing time.sleep()
+                This is a static wait
+                It will wait for the specific amount of time given and after the sleep time is completed, it will perform the operation
+                This process is not very efficient because, unnecessary wait is too much
+
+        *   conditional synchronization     :   Conditions are passed
+            There are 2 types
+            *   implicit_wait   :   conditions are internally taken
+                    SYNTAX      :   driver.implicitly_wait(n)
+                    The script will wait only until the element is available, as soon as the element is available, it will start performing the operations right away.
+                    So there is no unnecessary wait
+                    A single implicit_wait is sufficient for the whole program. It will apply globally for all the web-elements
+
+            *   explicit_wait   :   conditions are externally passed
+                    We have to import WebDriverWait and expected_conditions
+
+                    from selenium import webdriver
+                    from selenium.webdriver.support.ui import WebDriverWait
+                    from selenium.webdriver.support import expected_conditions as EC
+
+                    wait = WebDriverWait(driver, timeouttime)
+
+                    wait.until(EC.condition)
+
+                    It will wait until the condition is satisfied and then it will go to the next line
+                    If the condition is not satisfied, then it will always give TimeOutException
+
+##############################################################################################
+
 40. Write the code for Reading Excel through Selenium
+        We use xlrd
+
+        STEP1   :   import xlrd
+        STEP2   :   Open the excel file
+                    workbook = xlrd.open_workbook("path_of_excel_file")             ## book object
+        STEP3   :   Open the worksheet
+                    worksheet = workbook.sheet_by_name("Sheetname")                 ## sheet object
+        STEP4   :   Convert the sheet object to the generator object
+                    rows = worksheet.get_rows()                                     ## generator object
+        STEP5   :   Traverse/typecase/next() to fetch the data from the gen obj
+
+
+##############################################################################################
+
 42. What are the different exceptions you get when working with WebDriver?
+        *   NoSuchElementException
+                We get this when the element is not located(wrong locator value, element is not there on the web-page)
+        *   ElementNotInteractableException
+                When the element is still loading or when it is not available for the interaction and we try to interact with it.
+        *   ElementClickInterceptedException
+                If the click operation is prevented/covered by some other web-element
+        *   InvalidSelectorException
+                When the css selector and xpath syntax is wrong
+        *   InvalidArgumentException
+                When the locator name is wrong
+        *   WebDriverException
+                When the driver cannot interact with the browser
+        *   SessionNotCreatedException
+                When the browser version and the driver version mismatches
+        *   NoAlertPresentException
+                When we try to switch the driver to the alert, but there is no alert
+        *   NoSuchWindowException
+                When we try to switch the driver to the window, but there is no new window
+        *   NoSuchFrameException
+                When we try to switch the driver to the frame which doesn't exist
+
+##############################################################################################
 43. What are the languages supported by WebDriver?
+        Python, Java, JavaScript, C#, Ruby,..
+
+##############################################################################################
 44. How do you clear the contents of a textbox in selenium
+        using clear()
+        SYNTAX  :   web_element.clear()
+
+##############################################################################################
 45. What is a Framework?
+
+##############################################################################################
 46. Different components of your framework?
+
+##############################################################################################
 47. Can you explain the Framework flow with a diagram?
+
+##############################################################################################
 50. What kind of reports are generated by your framework?
+        html
+
+##############################################################################################
 51. What are the prerequisites to run selenium webdriver?
+        *   Programming language
+        *   install selenium
+        *   Editor(Pycharm, VSCode)
+        *   Setup the project
+        *   import selenium webdriver
+
+##############################################################################################
 52. What are the advantages of selenium webdriver?
+        *   Supports multiple languages
+        *   Supports multiple browsers
+        *   Supports all the platforms
+        *   Open source
+        *   Supports cross browser testing
+        *   Github support
+
+##############################################################################################
 53. How to invoke an application in webdriver?
+        from selenium import selenium
+        driver = webdriver.Chrome()
+
+        driver.get("url")
+
+##############################################################################################
 55. How to get the number of frames on a page?
+        All the frames will have the tagname "iframe"
+
+        all_frames = driver.find_elements("tag name", "iframe")     ## list of web-elements
+        print(len(all_frames))
+
+##############################################################################################
 56. How to verify that an element is not present on a page?
+        We use explicit_wait
+        We import WebDriverWait and expected_condition
+
+##############################################################################################
 57. How do you simulate scroll down action?
+        from selenium import webdriver
+        from selenium.webdriver.common.action_chains import ActionChains
+        from selenium.webdriver.common.keys import Keys
+
+        driver = webdriver.Chrome()
+        ac = ActionChains(driver)
+
+        To scroll to a particular element   :   ac.scroll_to_element(ele).perform()
+        To scroll till the end of the app   :   ac.send_keys(Keys.END).perform()
+        To scroll back to the start         :   ac.send_keys(Keys.HOME).perform()
+        Page down scrolling                 :   ac.send_keys(Keys.PAGE_DOWN).perform()
+        Page up scrolling                   :   ac.send_keys(Keys.PAGE_UP).perform()
+
+##############################################################################################
 58. How to perform keyboard related actions?
+        Using ActionChains and Keys class
+        from selenium import webdriver
+        from selenium.webdriver.common.action_chains import ActionChains
+        from selenium.webdriver.common.keys import Keys
+
+        driver = webdriver.Chrome()
+        ac = ActionChains(driver)
+
+        ac.send_keys(Keys.KEY).perform()
+
+##############################################################################################
 59. How to verify the presence of the success message on a page?
+        use expected_conditions
+
+##############################################################################################
 60. Which is the package which is to be imported while working with webdriver?
+        from selenium import webdriver
+
+
+###########################################################################################################
+
+Challenges faced
+    *   Handling dynamic elements
+    *   Handling multiple frames and windows
+    *   Maintaining the test scripts
+    *   Handling captchas and OPTs
+    *   Synchronization issues
+
+###########################################################################################################
+
+Pytest Rules
+What is conftest
+How do you handle multiple windows in selenium
+How to pass parameters for the testcases
+what is absolute xpath
+Syntax of all xpaths
+How to write in an excel file
+How do you create dependencies in Pytest
+Difference between skip and skipif
+
+###########################################################################################################
+
+1.  How to handle windows
+2.  actionchains
+3.  Opne amazon website, search for iphone 16 and find price of blue color iphone
+4.  How to achieve dynamic xpath
+5.  dropdowns, multi-select listbox
+6.  explain the framework
+
+1.  What is overloading and overriding
+2.  Reverse a string
+3.  API status codes
+    Status code for unauthorized
+4.  What is base class
+
+####################################################################################
+DISADVANTAGES
+    *   Require Programming language
+    *   Tests only web-application
+    *   High maintenance
+    *   No in-built report
+    *   Cant automate images
+
+####################################################################################
+
+To import webdriver     --> from selenium import webdriver
+To check conditions     --> from selenium.webdriver.support.ui import WebDriverWait
+                            from selenium.webdriver.support import expected_conditions
+To import Select        --> from selenium.webdriver.support.select import Select
+ActionChains            --> from selenium.webdriver.common.action_chains import ActionChains
+                            from selenium.webdriver.common.keys import Keys
+excel read              --> import xlrd
+write excel             --> from openpyxl import Workbook
+pytest                  --> import pytest
+
+##############################################################################
+
+reverse a string
+reverse the words of the string
+list = [1, 2 ,3, 4, 5, 6] --> find the squares of all even numbers in list
+Diff between set and list
+declare empty set and empty list
+OOPS - wap for inheritance
+Creation of objects
+xpaths
+Pytest
+Draw framework diagram and explain
+What exceptions we handled in selenium. Types of exceptions
+
+##############################################################################
+
+Difference between select and bootstrap dropdown
+    select dropdown     :   The tagname of the dropdown will be <select>
+                            We handle it using Select class
+
+    bootstrap dropdown  :   The tagname of the dropdown will be <div> /<ul>
+                            We handle it by using normal locators
+
+##############################################################################
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

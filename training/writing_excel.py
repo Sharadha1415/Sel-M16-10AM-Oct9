@@ -2,6 +2,7 @@
 openpyxl
 
 '''
+import time
 
 from openpyxl import Workbook
 
@@ -92,17 +93,17 @@ worksheet['D1'] = 'email_id'
 
 # #-----------------------------------------------------------------------------
 
-## Add new sheet to the existing workbook
-
-## load existing workbook
-workbook = load_workbook('emp_data.xlsx')
-# workbook = load_workbook('path\emp_data.xlsx')
-
-## create a new sheet
-new_sheet = workbook.create_sheet(title="title")
-
-## write the data asusal
-## save the file
+# ## Add new sheet to the existing workbook
+#
+# ## load existing workbook
+# workbook = load_workbook('emp_data.xlsx')
+# # workbook = load_workbook('path\emp_data.xlsx')
+#
+# ## create a new sheet
+# new_sheet = workbook.create_sheet(title="title")
+#
+# ## write the data asusal
+# ## save the file
 
 # ##-----------------------------------------------------------------------------
 #
@@ -138,14 +139,7 @@ new_sheet = workbook.create_sheet(title="title")
 # worksheet.delete_cols(1)        ## Deletes col1
 
 
-
-
-
-
-
-
-
-
+####################################################################################
 
 
 

@@ -50,10 +50,42 @@ To pull the repository from other's github
     *   For the next times, to get the changes
         cd <repo_path> -->  git pull
 
+To create a new branch
+    git branch branchname
+
+Switch to the branch
+    git checkout branchname
+    OR
+    git switch branchname
+
+To create and to switch to a branch
+    git checkout -b branchname
+
+To get list of all branches
+    git branch
+
+To go back to the master branch
+    git checkout main
+
+To merge
+    git merge branchname
+
+To delete the branch
+    git branch -d branchname
 
 
+merge vs rebase
+    Merge
+    *   Merge combines another branch without changing the commit history
+    *   Keeps the exact history of both the branches
+    *   creates a new merge commit
+        SYNTAX  :   git merge branchname
 
-
+    Rebase
+    *   Moves the commits on top of another branch
+    *   Rewrite the commit history
+    *   No merge commit will be created
+        SYNTAX  :   git rebase main
 
 
 

@@ -234,6 +234,48 @@ clear   :   To clear the contents of the textbox, we use clear()
             SYNTAX  :   web_element.clear()
 '''
 
+# from selenium import webdriver
+#
+# opts = webdriver.ChromeOptions()
+# opts.add_experimental_option("detach", True)
+#
+# driver = webdriver.Chrome(opts)
+#
+# driver.get("https://testautomationpractice.blogspot.com/")
+# time.sleep(2)
+#
+# driver.find_element("id", "name").send_keys("Shantheri")
+# time.sleep(2)
+# driver.find_element("id", "name").clear()
+
+##############################################################################################
+
+'''
+submit  :   To submit a form, we use submit()
+            This works only if the element is present inside a <form> tag
+'''
+
+# ## EG1
+# from selenium import webdriver
+#
+# opts = webdriver.ChromeOptions()
+# opts.add_experimental_option("detach", True)
+#
+# driver = webdriver.Chrome(opts)
+#
+# driver.get("https://www.instagram.com/")
+# time.sleep(1)
+# driver.find_element("name", "username").send_keys('chandana')
+# time.sleep(1)
+# driver.find_element("name", "password").send_keys("chandana@12345")
+# time.sleep(1)
+# driver.find_element("xpath", '//div[text()="Log in"]').submit()       ## works fine
+
+'''
+The above element is present inside the form tag. <form> is the ancestor of the above element
+'''
+##-----------------------------------------------------------------------------
+
 from selenium import webdriver
 
 opts = webdriver.ChromeOptions()
@@ -241,33 +283,24 @@ opts.add_experimental_option("detach", True)
 
 driver = webdriver.Chrome(opts)
 
-driver.get("https://testautomationpractice.blogspot.com/")
+driver.get("https://www.myntra.com/")
 time.sleep(2)
 
-driver.find_element("id", "name").send_keys("Shantheri")
-time.sleep(2)
-driver.find_element("id", "name").clear()
+driver.find_element("xpath", '(//a[text()="Home"])[1]').submit()
 
+'''
+WebDriverException: Message: To submit an element, it must be nested inside a form element
+ERROR because the web-element is not present inside the form tag
+'''
 
+######################################################
 
+'''
+Difference between click() and submit()
+    *   click()     :   It clicks on any webelement, not specific to any tagname
+    *   submit()    :   It clicks on the elements which belong to form tag(form-related elements) 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+'''
 
 
 

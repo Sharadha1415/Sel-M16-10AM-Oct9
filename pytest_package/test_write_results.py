@@ -1,5 +1,6 @@
 ## Stored the login credentials in an excel file(ddt\login_credentials.xlsx)
 ## reading the login credentials(ddt\read_login_data.py)
+
 import os.path
 import time
 from openpyxl import Workbook
@@ -36,7 +37,6 @@ def setup():
     time.sleep(2)
     yield driver
     driver.close()
-
 
 @pytest.mark.parametrize("username, pwd", login_data)
 def test_login(username, pwd, setup):

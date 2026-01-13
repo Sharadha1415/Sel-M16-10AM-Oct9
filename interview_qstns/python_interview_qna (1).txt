@@ -1,0 +1,857 @@
+1. How can you copy an object in Python? 
+	We can copy in many ways
+	* slicing 
+		EG : a = 'hello' or a = [] or a = ()
+		     b = a[:]
+	* assign to some variable
+		EG : a = "hello" or any iterable
+		     b = a 
+	* If it is a list we can use copy method.
+		EG : a = [1, 2, 3]
+		     b = a.copy()
+
+#-------------------------------------------------------------------------------------------------------------
+2. What is negative index in Python?
+	It allows to access the elements of the sequence from the end using negative numbers as indices
+	EG :  a = "hello world"
+	      print(a[-9:-4])	##output -->  llo wor
+	
+#--------------------------------------------------------------------------------------------------------------
+3. How you can convert a number to a string? 
+	a = 10
+	str(a)
+
+#------------------------------------------------------------------------------------------------------------
+4. Mention what are the rules for local and global variables in Python?
+	The function defined in global space(outside the function) is called global variable
+	The function defined in local space(inside the function) is called local variable
+
+	Can make use of global variable anywhere in the program
+	Can make use of local variable only in the function block
+	
+	If we want to modify the global variable we use "global" keyword
+	If we want to modify the local variable in nested function we use "nonlocal" keyword
+
+#------------------------------------------------------------------------------------------------------------
+5. Explain how to delete a file in Python?
+	Using os module we can
+	import os
+    	os.remove("file_name")
+
+#-----------------------------------------------------------------------------------------------------------
+6. Mention five benefits of using Python?
+	Open source and platform independent
+	Readable and Maintainable Code. 
+	Supports Multiple Programming Paradigms. 
+	Extensive Standard Library. 
+	Simplify Complex Software Development
+	Easy to Read and Learn.
+
+#-----------------------------------------------------------------------------------------------------------
+7. Mention the use of the split method in Python?
+	split() is a string method.
+	To split the string we can use the split() method
+	EG : 	str_ = "language"
+		str_.split('a') --> output= ['l','ngu', 'ge']
+		It will split at that particular character
+		The return type of split is a list
+		if we dont pass any parameter inside split(), by default it will split at empty spaces.
+
+#-----------------------------------------------------------------------------------------------------------
+8. What Are The Two Built-In Functions To Read A Line Of Text From Standard Input, Which Is By Default The Keyboard?
+	input() function.
+	It will take the input from the user. It will always consider as string
+
+	EG : 	data = input("enter the name: ")
+		We should enter the value for data in terminal
+
+#-----------------------------------------------------------------------------------------------------------
+9. How are the function help() and dir() different?
+	help() 	--> 	This function will give the details present in other module
+			we will use help() for modules
+			SYNTAX :  help("file_name")
+	dir()	--> 	This will give the list of attributes.
+			We will be applying dir() on datatypes or functions or any other entities			
+			SYNTAX	: dir("data")
+	
+#-----------------------------------------------------------------------------------------------------------
+10. As everything in python is an object, explain the characteristics of python’s objects?
+	Identity : 	Each object in Python has a unique identity. This means that two objects can have the same value, but they are still two different objects.
+	Type:		Every object in Python has a type. The type of an object determines what attributes and methods it has.
+	Value:		Every object in Python has a value. The value of an object can be a simple value, such as a number or a string, or it can be a more complex value, 			such as a list or a dictionary.
+	
+	Examples for explaining
+	Numbers: 	Numbers are objects in Python. They can be integers, floats, or complex numbers.
+	Strings: 	Strings are objects in Python. They are sequences of characters.
+	Lists: 		Lists are objects in Python. They are ordered collections of objects.
+	Dictionaries: 	Dictionaries are objects in Python. They are unordered collections of key-value pairs.
+	Functions: 	Functions are objects in Python. They are blocks of code that can be executed.
+	Classes: 	Classes are objects in Python. They are used to create new types of objects.
+	Modules: 	Modules are objects in Python. They are files that contain Python code.
+
+#_----------------------------------------------------------------------------------------------------------
+11. What is a python module?
+	 A python file containing Python definitions and statements
+	There are two types of modules: built-in modules and user-defined modules. 
+	Built-in modules are those that are already installed with Python and can be imported directly into your code. 
+	User-defined modules are those that you create yourself and import into your code.
+
+#-----------------------------------------------------------------------------------------------------------
+12. Name the file related modules in python?
+	os
+	os.path
+	fileinput
+	stat
+	filecmp
+	tempfile
+
+#-----------------------------------------------------------------------------------------------------------
+13. Explain the use of with statement?
+	We use with statement to open the file.
+	We call it as with context manager
+	So when we open the file using context manager, we dont have to close the file manually, as soon as we come out of the file block the file will be closed.
+	
+	SYNTAX	:	with open("file_path", "mode") as file:
+				pass
+	
+			
+#-----------------------------------------------------------------------------------------------------------
+14. Explain all the file processing modes supported by python?
+	FOUR modes :
+		read(r)	:	To read the file
+		write(w):	To write in the file. If we open file in write mode and write the data, it will override the existing data.
+		append(a):	To add the data to  the file we go for append.  If we open file in append mode and write the data, 
+				it will not override the existing data, instead it will add the data to the existing data
+		create(x):	To create the file we go for create mode
+
+	If we don't give any mode while opening the file, by default it will open in the read mode
+#------------------------------------------------------------------------------------------------------------
+16. Explain the shortest way to open a text file and display its contents?
+	Using open() function
+	file = open("filename")
+
+#-------------------------------------------------------------------------------------------------------------
+17. How do you create a dictionary which can preserve the order of pairs?
+	We create dictionary by passing key-value pairs
+	dict_name = {"key":"value"}
+	A single key-value pair will be considered as one element
+	There are few things we have to remember
+	*	keys should be immutable
+		Keys should not be repeated
+	*	Values can either be mutable or immutable
+		Values can be repeated
+
+#-------------------------------------------------------------------------------------------------------------
+18. When does a dictionary is used instead of a list?
+	When we want to store the data in the key-value pair, we go for dictionary
+	In list we can only store multiple data individually, but in dict we can create key-value pairs	
+
+#-------------------------------------------------------------------------------------------------------------
+19. What is the use of enumerate () in python?
+	enumerate gives us the enumerate object
+	To get the index of the elements we can go for enumerate
+	It will  give the tuple containing the index and item 
+	Eg : 	str_ = "hello"
+		result = enumerate(str_)	## enumerate object
+		for ele in result:
+			print(ele)
+		
+		output:
+			(0, h)
+			(1, e)
+			(2, l)	
+			(3, l)
+			(4, o)
+
+#-------------------------------------------------------------------------------------------------------------
+20. How many kinds of sequences are supported by python? What are they?
+	Tell them you know four
+	*	string	:	It is an immutable sequence. Strings are enclosed in single or double quotes.
+	*	list	:	It a mutable sequence of any type of object. Lists are enclosed in square brackets.
+	*	tuple	:	It is an immutable sequence of any type of object. Tuples are enclosed in parentheses	
+	*	range	:	It is an immutable sequence of numbers. Ranges are generated using the range() function.
+
+#-----------------------------------------------------------------------------------------------------------
+21. How do you perform pattern matching in python? Explain.
+
+#------------------------------------------------------------------------------------------------------------
+23. How to merge two sorted list?
+	First we have to sort
+	list1 =  [1, 2, 3]
+	list2 =  [4, 5, 6]
+	There are two ways to merge them
+	*	main_list = list1 + list2	--> [1, 2, 3, 4, 5, 6]
+	*	main_list = [*list1, *list2]	--> [1, 2, 3, 4, 5, 6]
+
+#-----------------------------------------------------------------------------------------------------------
+24. How to call global variable in method with python?
+	We can easily access global variables in methods
+	But if we want to modify them, we should use global keyword.
+	x = 10
+
+	def my_function():
+		global x
+ 		x += 1
+		print(x)
+	my_function()
+
+
+#-----------------------------------------------------------------------------------------------------------
+25. Inheritance in python?
+	Inheritance is the capability of one class to derive or inherit the properties from another class. 
+	Inheritance enables us to define a class that takes all the functionality from a parent class and allows us to add more.
+	Parent class is the class being inherited from, also called base class.
+	Child class is the class that inherits from another class, also called derived class.
+
+
+	class Parent:
+	    pass
+
+	class Child(Parent):
+	    pass
+
+#-----------------------------------------------------------------------------------------------------------
+26. Multiple Inheritance in Python?
+	Multi-level inheritance is achieved when a derived class inherits another derived class. 
+	There is no limit on the number of levels.
+
+	class A:
+	    pass
+	
+	class B(A):
+	    pass 
+	
+	class C(B):
+	    pass
+
+	Here B is inheriting A, and C is inheriting B
+
+#----------------------------------------------------------------------------------------------------------
+27. Can we make exception handling generic?
+	Yes We can
+
+	Generic exception means, It handles all types of exceptions in a single except block
+	Syntax :	
+		try : 
+			statements
+		except Exception/BaseException as alias: 
+			Statements
+
+#----------------------------------------------------------------------------------------------------------
+28. How to make private variable in python?
+	In encapsulation we see this actually.
+	We will just give _ before the variable name
+
+
+	We define a variable and prefix its name with a single underscore (_)
+	Eg : name = "Ram"	## normal variable
+	    _name = "Ram"	## private	
+
+#---------------------------------------------------------------------------------------------------------
+29. How Python is interpreted?
+	Python is both compiled as well as an interpreted language, which means when we run a python code, it is first 	compiled and then interpreted line by line
+	But the compilation process is implicit in python
+	Line by line execution of the code will take place, that means if we are having any error in any line, it will
+		stop the execution right away, only after the error is clarified it will continue the operation.
+
+#----------------------------------------------------------------------------------------------------------	
+30. How memory is managed in Python?
+	So in RAM, we have two areas stack and heap
+	Stack will be having main frame, in the main frame the reference variables will  be stored
+	The values will be stored in heap area.
+	The variables in the stack will be pointing to the corresponding values in the heap area.
+	
+#-----------------------------------------------------------------------------------------------------------
+31. What are Python decorators?
+	It is a concept where we can add the extra functionality to the existing function without modifying the function.
+	A single decorator can decorate any number of functions.
+	There are two types of decorators 	
+		*	built-in	: 	@classmethod, @staticmethod
+		*	user-defined	:
+				def outer(func):
+					def wrapper(*args, **kwargs):
+						func(*args, **kwargs)
+					return wrapper
+
+#-----------------------------------------------------------------------------------------------------------
+32. What is the difference between list and tuple?
+	*	list	:	lists are mutable. We can modify the original list. 
+				Written using []
+	*	tuple	:	tuples are immutable. We cannot modify the original tuple
+				Written using ()
+
+#-----------------------------------------------------------------------------------------------------------
+33. What is Dict and List comprehensions are?
+	It is a easy way of constructing the dictionary and list in a single line
+	Here we will be looping inside the list/dict
+	
+	SYNTAX:
+	NO CONDITION	:	list comprehension --> [operation for ele in iterable]
+				dict comprehension --> {key:value for ele in iterable}
+
+	ONLY IF CONDITION:	list comprehension --> [operation for ele in iterable if <condition>]
+				dict comprehension --> {key:value for ele in iterable if <condition>}
+
+	IF-ELSE CONDITION:	list comprehension --> [True block if <condition> else False Block for ele in iterable]
+				dict comprehension --> {key:value if <condition> else value for ele in iterable}			
+#---------------------------------------------------------------------------------------------------------
+34. What are the built-in type does python provides?
+	There are several built-in datatypes in python
+	Individual datatype --> int, float, complex, boolean
+	Collection datatype --> str, list, tuple, set, dict
+
+#----------------------------------------------------------------------------------------------------------
+35. What is lambda in Python?
+	An anonymous function is a function that is defined without a name.
+	While normal functions are defined using the def keyword in Python, anonymous functions are defined using the lambda keyword.
+	Syntax: lambda arg1 ,arg2,...argn :expression
+	lambda takes n number of arguments, but expression will be only one.
+
+#------------------------------------------------------------------------------------------------------
+36. Why lambda forms in python does not have statements?
+	lambda functions can't contain statements because they're anonymous and return a new function object at runtime
+	They are defined using single expression
+
+#------------------------------------------------------------------------------------------------------------
+37. What is pass in Python?
+	The pass statement is a null operation—it does nothing
+	It performs no operation
+	
+	Suppose if we want to define empty function/loop, we can go for pass
+	Eg :	def func():
+		    pass
+		
+		class Sample:
+		    pass
+
+	If we use pass, we will not get any error.
+
+#------------------------------------------------------------------------------------------------------
+38. In Python what are iterators?
+	In Python, an iterator is an object that allows you to iterate over collections of data, such as lists, tuples, dictionaries, and sets.
+	It consists of two methods: __iter__() and __next__().
+
+#-------------------------------------------------------------------------------------------------------
+39. In Python what is slicing?
+	Process of extracting multiple characters at a time/simultaneously.
+	Syntax : var_name[start index: End index :Step value]
+		start index default value 0
+		End index : default value length of the string
+		Step value default value 1(optional)
+	
+	Element at the end index will not be added in the slice.
+	
+	Positive step value indicate the slice from left to right(forward)  
+	negative step value indicate the slice from right left(reverse).
+	Wrong slicing will give Empty iterable, Slicing never gives us error
+
+#-------------------------------------------------------------------------------------------------------
+40. What are generators in Python?
+	Python generator is used to create python iterators.
+	This is done by defining a function but instead of the return statement returning from the function, use the 	"yield" keyword.
+
+	yield will take the value from the function, gives the value to the function call and goes back to the function.
+	It will create generator object
+
+#------------------------------------------------------------------------------------------------------
+41. Explain decorators with example
+
+#-------------------------------------------------------------------------------------------------------
+42. Difference between return and yield 
+	return :	Stops the execution
+			Cannot return to the function block
+			Multiple return statements can be written in a function, but only one return gets executed
+			Can return multiple elements
+
+	yield  :	Pauses the execution
+			Can return to the function block
+			Multiple yield keywords can be written in a function, all the yields will get executed
+			Can return multiple elements
+
+#------------------------------------------------------------------------------------------------------
+43. What is polymorphism? Explain with an example
+	Poly - Many, Morphs - forms
+	Polymorphism refers to the ability of the object with the same name to carry out different functionality altogether.
+
+	Polymorphism w.r.t inbuilt function  ex : len(), id(), print()
+	Polymorphism in operators              ex : + , -
+	Polymorphism in class methods        ex : list.pop(), set.pop()
+	Polymorphism w.r.t inheritance → overriding
+
+#--------------------------------------------------------------------------------------------------------
+44. Explain about constructor chaining and method chaining
+
+CONSTRUCTOR CHAINING
+	class A:
+	    def __init__(self, a):
+		self.a = a
+
+	class B(A):
+	    def __init__(self, b):
+		self.b = b 
+
+	In the above example, since we are inheriting A to B, init also will be inherited and self.a will be 
+	overridden with self.b
+	To overcome that we use super()
+
+
+	class A:
+	    def __init__(self, a):
+		self.a = a
+
+	class B(A):
+	    def __init__(self, b):
+		self.b = b 
+		super.__init__(self, a)
+	
+	When we use super, it will not override the values, both init will be considered
+
+METHOD CHAINING
+	class A:
+	    def method1(self):
+		pass 
+
+	class B(A):
+	    def method2(self):
+		pass
+	
+
+	method2 will override method1
+	To overcome,
+
+
+	class A:
+	    def method1(self):
+		pass 
+
+	class B(A):
+	    def method2(self):
+		pass
+		super.method1(self)			
+	
+	method2 will override method1
+
+#----------------------------------------------------------------------------------------------		
+45. Are objects callable ? explain
+	Yes, objects in Python can be callable. An object is callable if it defines the __call__() method.
+	 When an object is called, the __call__() method is executed.
+	
+	class MyClass:
+    		def __call__(self):
+        	    print("Hello, world!")
+
+	my_object = MyClass()
+	my_object()
+
+#----------------------------------------------------------------------------------------------
+46. What is init ?
+	init is a constructor, it is used to define object variables.
+	Whatever the variables we define in init, we will pass the actual values while creating the objects
+
+	class Sample:
+	    def __init__(self, a, b):
+		self.a = a
+		self.b = b 
+
+	sample_obj = Sample(10, 20)	## Here a-->10 and b-->20
+
+#-----------------------------------------------------------------------------------------------
+47. What is self in python ?
+	self is the parameter we give for the attributes inside the class.
+	It is the mandatory parameter and the first parameter for the attributes.
+	self will be holding the address of the invoking object
+
+#-----------------------------------------------------------------------------------------------
+48. How do you use object variables and class variables inside the class ?
+	We use object and class variables by prefixing the variable names with self
+
+	class Sample:
+		num1 = 100		## class variable
+
+		def __init__(self, a, b):	## a and b are object variables
+		    self.a = a		
+		    self.b = b
+
+		def display(self):
+			print(self.num1)	## Using class variable
+			print(self.a, self.b)	## Using object variable
+
+#------------------------------------------------------------------------------------------------
+49. What is abstraction?
+	Abstraction is a process of hiding the implementation of an application
+	An abstract class can be considered as a blueprint for other classes.
+
+	Conventions to create an abstract class
+	Import abstract base class
+		from abc import ABC , abstractmethod
+	Inherit ABC in the base class.
+		class ClassName(ABC)
+	Create an abstract method.
+		@abstractmethod
+	
+	Give implementation to all abstract method in all the child classes.
+
+#----------------------------------------------------------------------------------------------
+50. Explain getters setters. 
+	They come under encapsulation.
+	In encapsulation we can hide the data, also we can hide the attributes.
+	Getters are used to retrieve the hidden data or values of attributes, 
+	while setters are used to modify the hiddden data or values of attributes
+
+#----------------------------------------------------------------------------------------------------
+What are mutable and immutable ?
+	immutable --> Cannot modify the original iterable. Original memory cannot be modified
+			str, tuple, all individual dataypes
+	mutable   --> Can modify the original iterable. Original memory will be modified
+			list, dict, set
+
+#---------------------------------------------------------------------------------------------------
+pass --> performs no operation
+continue --> It will skip the current iteration
+break --> It will break out of the loop
+
+#------------------------------------------------------
+return --> It will take the value, gives the value to the function call and comes out of the function.
+		It will not create any object
+		Only one return statement will be executed
+yield --> It will take the value, gives the value to the function call and go back to the function.
+		It will create generator object	
+		All yield statements will be executed
+
+#-------------------------------------------------------
+
+def my_function(a, b):		## function defn. a, b are formal parameters
+    pass
+
+my_function(10, 20)		## function call. 10, 20 are actual parameters
+
+#---------------------------------------------------------------------------------
+
+
+1. Write a program to find the length of the iterable 
+## Using inbuilt functions
+str_1 = 'python is a programming language'
+print(len(str_1))
+
+## Using for loop
+str_1 = 'python is a programming language'
+total = 0
+for ele in str_1:
+    total += 1
+
+print(total)
+
+#-----------------------------------------------------------------------------------
+2. Write a program to reverse a iterable without using any inbuilt functions
+# Slicing
+str_1 = 'python is a programming language'
+print(str_1[::-1])
+
+
+# Using for loop
+str_1 = 'python is a programming language'
+rev_str = ''
+for ele in str_1:
+    rev_str = ele + rev_str
+
+print(rev_str)
+
+#------------------------------------------------------------------------------------
+3. Write a program to replace one string with another. 
+e.g. "Hello World" replaces "World" with "Universe"
+
+# Using str method
+str_ = 'Hello World'
+print(str_.replace("World", "Universe"))
+
+
+## Using regular expression
+str_ = 'Hello World'
+import re
+print(re.sub('World', 'Universe', str_))
+
+#-------------------------------------------------------------------------------------
+6. Write a program to print alternate characters in a string.
+
+# Slicing
+str_ = "Hello welcome to Python"
+print(str_[::2])        #Hlowloet yhn
+
+
+## Loop
+str_ = "Hello welcome to Python"
+res = ''
+for ele in range(0, len(str_), 2):
+    res += str_[ele]            #res = res + str_[ele]
+print(res)      #'Hlowloet yhn'
+
+#--------------------------------------------------------------------------------------
+
+7. Write a Program to print ascii values of the characters present in a string.
+str_ = 'Dharwad'
+for ele in str_:
+    print(f'The ASCII VALUE os {ele} is {ord(ele)}')
+
+#--------------------------------------------------------------------------------------
+8. Write a function to convert upper case to lower case and vice-versa without using inbuilt methods
+## Using inbuilt methods
+str_ = 'HelLO WeLCOmE tO BeNGAluRu'
+print(str_.swapcase())      #hELlo wElcoMe To bEngaLUrU
+
+#-------------------------------------------------------------------------------------
+9. Write a program to swap two numbers without using the 3rd variable
+num1 = 100
+num2 = 200
+num2, num1 = num1, num2
+print(num1)
+print(num2)
+
+#-------------------------------------------------------------------------------------
+14. write a func to check if the string is palindrome or not
+str_1 = 'madam'
+str_2 = 'sir'
+
+def palindrome(string):
+    if string == string[::-1]:
+        print(f'{string} is a palindrome')
+    else:
+        print(f'{string} is not a palindrome')
+
+palindrome(str_1)
+palindrome(str_2)
+
+#---------------------------------------------------------------------------------------
+wap to create a dict of element and its count pair
+str_ = 'she sells seashells on the seashore'    #{s:8, h:4, e:7, ..}
+d = {}
+for ele in str_:
+    if ele not in d:
+        d[ele] = 1
+    else:
+        d[ele] += 1
+print(d)
+
+#------------------------------------------------------------------------------------------
+23. wap to get the below output
+s = 'hi how are you'        ## uoy era woh ih
+rev_str = ''
+for ele in s:
+    rev_str = ele + rev_str
+print(rev_str)
+
+#-------------------------------------------------------------------------------------------
+53. write a list comprehension to get the list of even numbers from 1-50
+even_num = [ele for ele in range(1, 51) if ele%2==0]
+print(even_num)
+
+#-------------------------------------------------------------------------------------------
+'''1. wap to find the sum of n natural numbers'''
+number = int(input('Enter the num: '))     #10
+total = 0
+
+for num in range(1, number+1):
+    total += num        #total = total + num
+print(total)
+
+#---------------------------------------------------------------------------------------------
+4. create a list where even len elements should be as it is, odd len elements should be reversed
+names = ['samsung', 'oneplus', 'apple', 'vivo', 'oppo', 'nokia', 'googlepixel']
+res_list = []
+
+for ele in names:
+    if len(ele) % 2 == 0:
+        res_list.append(ele)
+    else:
+        res_list.append(ele[::-1])
+
+print(res_list)
+
+#---------------------------------------------------------------------------------------------
+7. find the factorial of a number
+num = int(input('Enter the num: '))     #5
+fact = 1
+for ele in range(1, num+1):
+    fact *= ele     #fact = fact * ele
+
+print(fact)
+
+#-------------------------------------------------------------------------------------------------
+12. Check if the number is prime or not
+num = int(input('Enter the number : '))
+for ele in range(2, num):
+    if num % ele == 0:
+        print('Composite number')
+        break
+else:
+    print('Prime number')
+
+#--------------------------------------------------------------------------------------------------
+13. wap to print the prime numbers from 2-50
+for i in range(2, 50):
+    for j in range(2, i):
+        if i % j == 0:
+            break
+    else:
+        print(i)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

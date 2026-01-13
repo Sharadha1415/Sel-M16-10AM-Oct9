@@ -88,6 +88,14 @@ merge vs rebase
         SYNTAX  :   git rebase main
 
 
+pull vs fetch
+    Fetch
+        Downloads latest changes
+        Does NOT change your code
+        git fetch origin
+    Pull
+        Fetch + Merge
+        Updates your working code
 
 
 

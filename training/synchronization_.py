@@ -250,7 +250,14 @@ from selenium.common import NoSuchElementException
 #######################################################################################
 
 '''
-fluent_wait :   
+fluent_wait :   A wait that waits for a maximum time
+                Checks condition at regular intervals
+                Ignores specific exceptions
+                Check every few seconds until element appears or timeout happens
+                Key Features:
+                    Polling frequency
+                    Timeout
+                    Exception handling
 '''
 
 from selenium import webdriver

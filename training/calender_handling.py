@@ -1,32 +1,32 @@
 import time
 
-from selenium import webdriver
-
-opts = webdriver.ChromeOptions()
-opts.add_experimental_option("detach", True)
-
-driver = webdriver.Chrome(opts)
-
-driver.get('https://www.makemytrip.com/')
-driver.maximize_window()
-time.sleep(2)
-
-driver.find_element('xpath', '//span[@class="commonModal__close"]').click()
-time.sleep(2)
-
-driver.find_element('xpath', '//span[text()="Departure"]').click()
-time.sleep(2)
-
-
-def select_date(month, date):
-    while True:
-        try:
-            driver.find_element('xpath', f'//div[text()="{month}"]/../..//p[text()="{date}"]').click()
-            break
-        except:
-            driver.find_element('xpath', '//span[@class="DayPicker-NavButton DayPicker-NavButton--next"]').click()
-
-select_date('September 2026', 25)
+# from selenium import webdriver
+#
+# opts = webdriver.ChromeOptions()
+# opts.add_experimental_option("detach", True)
+#
+# driver = webdriver.Chrome(opts)
+#
+# driver.get('https://www.makemytrip.com/')
+# driver.maximize_window()
+# time.sleep(2)
+#
+# driver.find_element('xpath', '//span[@class="commonModal__close"]').click()
+# time.sleep(2)
+#
+# driver.find_element('xpath', '//span[text()="Departure"]').click()
+# time.sleep(2)
+#
+#
+# def select_date(month, date):
+#     while True:
+#         try:
+#             driver.find_element('xpath', f'//div[text()="{month}"]/../..//p[text()="{date}"]').click()
+#             break
+#         except:
+#             driver.find_element('xpath', '//span[@class="DayPicker-NavButton DayPicker-NavButton--next"]').click()
+#
+# select_date('September 2026', 25)
 
 ##############################################################################################################
 
@@ -93,19 +93,41 @@ Go to https://www.booking.com/, select the check-in date
 #
 # # driver.find_element('xpath', '//p[text()="Birsa Munda Airport"]').click()
 
+###############################################################################
+
+from selenium import webdriver
+
+opts = webdriver.ChromeOptions()
+opts.add_experimental_option("detach", True)
+opts.add_argument("--disable-notifications")
+
+driver = webdriver.Chrome(opts)
+
+driver.get('https://www.irctc.co.in/nget/train-search')
+driver.maximize_window()
+time.sleep(2)
+
+driver.find_element("xpath", '//button[text()="OK"]').click()
+time.sleep(2)
+
+driver.find_element('xpath', '//span[@class="ng-tns-c69-9 ui-calendar"]').click()
+time.sleep(2)
+
+def select_date(month, date):
+    while True:
+        try:
+            date = driver.find_element('xpath', f'//span[text()="{month}"]/../../..//a[text()="{date}"]')
+            if date.is_enabled():
+                date.click()
+            else:
+                print("Cant book for the selected date")
+                break
+            break
+        except:
+            driver.find_element('xpath', '//span[@class="ui-datepicker-next-icon pi pi-chevron-right ng-tns-c69-9"]').click()
 
 
-
-
-
-
-
-
-
-
-
-
-
+select_date("March", 13)
 
 
 
